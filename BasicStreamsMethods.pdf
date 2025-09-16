@@ -1,0 +1,135 @@
+1. forEach() – Print each element
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] str = {"flight", "fling", "flow"};
+        Arrays.stream(str)
+              .forEach(System.out::println);
+    }
+}
+
+2. map() – Convert all strings to uppercase
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Arrays.stream(new String[]{"flight", "fling", "flow"})
+              .map(s -> s.toUpperCase())
+              .forEach(System.out::println);
+    }
+}
+
+3. filter() – Keep only strings that start with "fl"
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Arrays.stream(new String[]{"flight", "fling", "flow"})
+              .filter(s -> s.startsWith("fl"))
+              .forEach(System.out::println);
+    }
+}
+
+4. sorted() – Sort the strings alphabetically
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Arrays.stream(new String[]{"flight", "fling", "flow"})
+              .sorted()
+              .forEach(System.out::println);
+    }
+}
+
+5. distinct() – Remove duplicates
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] str = {"flight", "flow", "flow", "fling"};
+        Arrays.stream(str)
+              .distinct()
+              .forEach(System.out::println);
+    }
+}
+
+6. count() – Count total elements
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        long count = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                           .count();
+        System.out.println("Count: " + count);
+    }
+}
+
+7. collect() – Convert stream back to a list
+
+import java.util.*;
+import java.util.stream.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> list = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                                  .collect(Collectors.toList());
+        System.out.println(list);
+    }
+}
+
+8. anyMatch() / allMatch() / noneMatch()
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        boolean any = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                            .anyMatch(s -> s.contains("g"));
+        boolean all = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                            .allMatch(s -> s.startsWith("f"));
+        boolean none = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                             .noneMatch(s -> s.length() > 10);
+
+        System.out.println("Any contains 'g': " + any);     // true
+        System.out.println("All start with 'f': " + all);   // true
+        System.out.println("None longer than 10: " + none); // true
+    }
+}
+
+9. reduce() – Concatenate all strings
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        String result = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                              .reduce("", (a, b) -> a + b);
+        System.out.println("Concatenated: " + result);
+    }
+}
+
+10. min() / max() – Find lexicographically smallest or largest
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Main {
+    public static void main(String[] args) {
+        String min = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                           .min(Comparator.naturalOrder())
+                           .orElse("None");
+        String max = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                           .max(Comparator.naturalOrder())
+                           .orElse("None");
+
+        System.out.println("Min: " + min); // flight
+        System.out.println("Max: " + max); // flow
+    }
+}

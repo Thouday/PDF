@@ -1,0 +1,61 @@
+1. Convert to Uppercase
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Arrays.stream(new String[]{"flight", "fling", "flow"})
+              .map(s -> s.toUpperCase())
+              .forEach(System.out::println);
+    }
+}
+
+2. Get Length of Each Word
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Arrays.stream(new String[]{"flight", "fling", "flow"})
+              .map(String::length)
+              .forEach(System.out::println);
+    }
+}
+
+3. Add a Prefix or Suffix
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Arrays.stream(new String[]{"flight", "fling", "flow"})
+              .map(s -> "Word: " + s)
+              .forEach(System.out::println);
+    }
+}
+
+4. Convert to a List of First Characters
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Character> firstLetters = Arrays.stream(new String[]{"flight", "fling", "flow"})
+                                             .map(s -> s.charAt(0))
+                                             .collect(Collectors.toList());
+        System.out.println(firstLetters);
+    }
+}
+
+5. Map to Boolean (e.g., starts with "fl")
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Arrays.stream(new String[]{"flight", "fling", "flow"})
+              .map(s -> s.startsWith("fl"))
+              .forEach(System.out::println);
+    }
+}

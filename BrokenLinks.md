@@ -54,8 +54,7 @@ public class BrokenLinks {
 
         driver.get("https://example.com");
 
-        List<WebElement> links =
-                driver.findElements(By.tagName("a"));
+        List<WebElement> links = driver.findElements(By.tagName("a"));
 
         HttpClient client = HttpClient.newHttpClient();
 
